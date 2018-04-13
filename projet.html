@@ -14,6 +14,7 @@ Released under the MIT license: http://jsbin.mit-license.org
   <script src="js/Collisions.js"></script>
   <script src="js/Animation.js"></script>
   <script src="js/Gestion_evennements.js"></script>
+  <script src="js/SoundWave.js"></script>
   <script src="js/Main.js"></script>
    <div class="dropdown">
   <button onclick="my_function()" class="dropbtn">Replay</button>
@@ -22,6 +23,11 @@ Released under the MIT license: http://jsbin.mit-license.org
 </div> 
 </head>
 <body>
+    <audio src="http://mainline.i3s.unice.fr/mooc/LaSueur.mp3" 
+    id="player"
+    controls loop 
+    crossorigin="anonymous">
+</audio>
 	<canvas id="myCanvas" width=600 height=700></canvas>
 </body>
 </html>
