@@ -9,7 +9,7 @@ function testeCollisions() {
 function dessineEtDeplaceLesObjets() {
    voitures.forEach((el) => {
      el.draw(ctx);
-     el.move();
+    el.move();
    })
   
 }
