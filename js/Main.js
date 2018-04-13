@@ -1,5 +1,6 @@
 window.onload = init;
 
+let cpt = 0;
 let canvas, ctx;
 let cpt_x = 5, cpt_y = -2;
 let voitures = [];
@@ -28,13 +29,13 @@ function init(){
 	joueur.vitesseX = 0;
 	joueur.vitesseY = 5;
 	
+	//canvas.getContext('2d').putImageData(data, 0, 0);
+	
 	voitures.push(joueur);
 	
 	//Demarrage de l'animation
 	requestAnimationFrame(animation);
 }
-
-  
   
 
 
