@@ -69,10 +69,12 @@ function testCollisionJoueursEnnemis() {
         	collision = true;
         	x_explosion = joueur.x - 10;
         	y_explosion = joueur.y - 20;
-        	if (nb_voitures_gagnees > 0) nb_voitures_gagnees -= 1;
-        	else stop_partie = true;
-        	ctx.fillText("PERDU !", 260, 260);
-        	ctx.fillText("Votre score est de " + score.toString() + " !", 150, 310);
+        	if (nb_voitures_gagnees > 0) {nb_voitures_gagnees -= 1;}
+        	else {
+        		stop_partie = true;
+        		ctx.fillText("PERDU !", 260, 260);
+        		ctx.fillText("Votre score est de " + score.toString() + " !", 150, 310);
+        }
     el.y = 0;
   }    
  })
