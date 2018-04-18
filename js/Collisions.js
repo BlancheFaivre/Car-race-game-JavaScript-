@@ -11,6 +11,11 @@ function dessineEtDeplaceLesObjets() {
      el.move();
    })
    
+   voitures_bonus.forEach((el) => {
+     el.draw(ctx);
+     el.move();
+   })
+   
    joueur.move();
    
   joueur.draw(ctx);
@@ -59,15 +64,27 @@ function testeCollisionsAvecMurs(r) {
 
 function testCollisionJoueursEnnemis() {
   voitures.forEach((el) => {
-        if(((el.y + 50) > joueur.y)&&(el.x == joueur.x)) {
+  //ATTention revoir le if parce que il doit plutôt etre
+        if((((el.y + 50) > joueur.y)&&(el.y + 50 < joueur.y + 50))&&(el.x == joueur.x)) {
         	collision = true;
         	x_explosion = joueur.x - 10;
         	y_explosion = joueur.y - 20;
-//ICI ON RAJOUTERA LE FAIT QUE LE JOUEUR PERD DES POINTS !!!!!!!!!!!!!
+        	if (nb_voitures_gagnees > 0) nb_voitures_gagnees -= 1;
+        	else stop_partie = true;
+        	ctx.fillText("PERDU !", 260, 260);
+        	ctx.fillText("Votre score est de " + score.toString() + " !", 150, 310);
     el.y = 0;
   }    
  })
   
+  voitures_bonus.forEach((el) => {
+  //ATTention revoir le if parce que il doit plutôt etre
+        if((((el.y + 50) > joueur.y)&&(el.y + 50 < joueur.y + 50))&&(el.x == joueur.x)) {
+        nb_voitures_gagnees += 1;
+//ICI ON RAJOUTERA LE FAIT QUE LE JOUEUR PERD DES POINTS !!!!!!!!!!!!!
+    el.y = 0;
+  }    
+ })
 }
 
 function rectsOverlap(x1, y1, w1, h1, x2, y2, w2, h2) {

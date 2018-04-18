@@ -1,11 +1,16 @@
 window.onload = init;
 
 let collision = false;
+let stop_partie = false;
+let cpt_tours = 0;
 let x_explosion = 0;
 let y_explosion = 0;
 let cpt = 0;
 let canvas, ctx;
+let score = 0;
+let nb_voitures_gagnees = 0;
 let voitures = [];
+let voitures_bonus = [];
 
 
 function my_function(){
@@ -27,6 +32,11 @@ function init() {
   ennemi = new Voiture(200, 50, 0, 0, 0, 'black');
   ennemi.vitesseY = 3;
   voitures.push(ennemi);
+  
+  bonus = new Voiture(50, 50, 0, 0, 0, 'black');
+  bonus.vitesseY = 3;
+  voitures_bonus.push(bonus);
+  
   joueur = new Voiture(370, 500, 0, 0, 0,'black');
   
   // Ecouteurs de clavier
