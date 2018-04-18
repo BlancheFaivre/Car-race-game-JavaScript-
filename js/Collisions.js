@@ -59,7 +59,7 @@ function testeCollisionsAvecMurs(r) {
 
 function testCollisionJoueursEnnemis() {
   voitures.forEach((el) => {
-        if((el.y + 50) > joueur.y) {
+        if(((el.y + 50) > joueur.y)&&(el.x == joueur.x)) {
         	collision = true;
         	x_explosion = joueur.x - 10;
         	y_explosion = joueur.y - 20;
