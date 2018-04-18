@@ -2,7 +2,7 @@
 // This line is a trick to initialize the AudioContext and will work on all recent browsers
 var audioCtx = window.AudioContext || window.webKitAudioContext;
 
-var canvas;
+var canvas2;
 var audioContext;       // Initialisation de la variable de l'audio
 var canvasContext;
 var analyser;
@@ -10,13 +10,13 @@ var width, height;
 
 var dataArray, bufferLenght;
 
-window.onload = function() {
+function onLoadSoundWave() {
     audioContext = new audioCtx(); // Crée et retourne un nouvel AudioContext object
 
-    canvas = document.querySelector("#myCanvas");
-    width = canvas.width;
+    canvas2 = document.querySelector("#my_music_canvas");
+    width = canvas2.width;
     height = 100;
-    canvasContext = canvas.getContext('2d');
+    canvasContext = canvas2.getContext('2d');
 
     buildAudioGraph();
 
@@ -40,9 +40,9 @@ function buildAudioGraph() {
 }
 
 function visualize(){
-    canvasContext.clearRect(0, 0, width, height);
+    //canvasContext.clearRect(0, 0, width, 100);
     canvasContext.fillStyle = 'rgba(0, 0, 5, 2)';
-    canvasContext.fillRect(0, 0, width, height);
+    canvasContext.fillRect(0, 0, width, 100);
 
     analyser.getByteTimeDomainData(dataArray);  // Pour copier les données de forme d'onde ou du domaine temporel dans dataArray
 
@@ -78,6 +78,6 @@ function visualize(){
   canvasContext.stroke();  
   
   // call again the visualize function at 60 frames/s
-  requestAnimationFrame(visualize);     // On va l'enlever par la suite et rajouter à la boucle d'animation
+  //requestAnimationFrame(visualize);     // On va l'enlever par la suite et rajouter à la boucle d'animation
   
 }

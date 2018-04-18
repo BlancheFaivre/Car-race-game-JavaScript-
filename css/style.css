@@ -1,5 +1,9 @@
+#my_music_canvas{
+    border:10px solid;
+}
+
 #myCanvas{
-    border:1px solid;
+    border:10px solid;
   }
  /* Dropdown Button */
 .dropbtn {
