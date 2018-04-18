@@ -15,17 +15,21 @@ Released under the MIT license: http://jsbin.mit-license.org
   <script src="js/Collisions.js"></script>
   <script src="js/Animation.js"></script>
   <script src="js/Gestion_evennements.js"></script>
+  <script src="js/SoundWave.js"></script>
   <script src="js/Main.js"></script>
   <div style="display:none;">
   <img id="route" src="route4.jpeg"
        width="300" height="227">
  	<img id="route2" src="route4.jpeg"
+<<<<<<< HEAD
        width="300" height="227">
 <img id="voiture_joueur" src="voiture_blanche.png"
        width="300" height="227">
 <img id="voiture_ennemie" src="voiture_rouge.png"
        width="300" height="227">
 <img id="explosion" src="explosion.png"
+=======
+>>>>>>> 4811f1e0f2a1ee3fafbbd3295058642444bf136a
        width="300" height="227">
 </div>
   <div class="dropdown">
@@ -35,6 +39,12 @@ Released under the MIT license: http://jsbin.mit-license.org
 	</div> 
 </head>
 <body>
-	<canvas id="myCanvas" width=600 height=700></canvas>
+    <audio src="http://mainline.i3s.unice.fr/mooc/LaSueur.mp3" 
+    id="player"
+    controls loop 
+    crossorigin="anonymous">
+</audio>
+  <canvas id="myCanvas" width=600 height=700></canvas>
+  <canvas id="my_music_canvas" width=600 height=100></canvas>
 </body>
 </html>

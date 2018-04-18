@@ -1,20 +1,16 @@
+
 //***************** VOITURES ************************
 class Voiture {
   constructor(x, y, l, h, R, couleur) {
     this.x = x || 0;
     this.y = y || 0;
-    this.l = l || 20;
-    this.h = h || 20;
+    this.l = l || 0;
+    this.h = h || 0;
     this.couleur = couleur || 'black';
     this.vitesseX = 0; // en pixels par image d'animation
     this.vitesseY = 0; // en pixels par image d'animation
-    this.vitesseMax = 3;
+    this.vitesseMax = 8;
 
-  }
-  
-  move() {
-    this.x += this.vitesseX;
-    this.y += this.vitesseY;
   }
   
   draw(ctx) {
@@ -25,12 +21,10 @@ class Voiture {
     
     ctx.restore();
   }
+  
+  move() {
+    this.x += this.vitesseX;
+    if (this.y < canvas.height) this.y +=this.vitesseY;
+    else this.y = -20;
+  }
 }
-
-
-function dessine_voitures(){
-	voiture1 = new Voiture(10,10,30,30,'red');
-	voiture1.vitesseX = 0;
-	voiture1.vitesseY = 5;
-}
-
