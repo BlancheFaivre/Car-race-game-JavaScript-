@@ -5,16 +5,11 @@
 }
 
 #myCanvas{
-<<<<<<< HEAD
-    border:10px solid;
-    background-color:ivory;
     position: absolute;
     margin-top: 120px;
-=======
 	background-color:ivory;
-    border:10px solid;
->>>>>>> 85f659596a9ce45a75269c61f2abb70470dae2d7
-  }
+    border:10px solid;  }
+    
  /* Dropdown Button */
 .dropbtn {
     background-color: #3498DB;

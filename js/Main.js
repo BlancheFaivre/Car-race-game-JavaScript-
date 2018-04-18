@@ -17,10 +17,6 @@ function my_function(){
 	window.location.reload();
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 85f659596a9ce45a75269c61f2abb70470dae2d7
 // main.js
 function init() {
   console.log("page chargee");
@@ -45,8 +41,6 @@ function init() {
   
   joueur = new Voiture(370, 500, 0, 0, 0,'black');
   
-  // Gestion SoundWave
-	onLoadSoundWave();
   // Ecouteurs de clavier
   window.onkeydown = traiteKeydown;
   window.onkeyup = traiteKeyup;
