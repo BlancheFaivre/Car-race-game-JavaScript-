@@ -20,6 +20,8 @@ function init(){
 	var width_canvas = canvas.width;
 	var height_canvas = canvas.height;
 	
+	// Gestion SoundWave
+	onLoadSoundWave();
 	//Ecouteurs de clavier
 	window.onekeydown = traiteKeydown;
 	window.onkeyup = traiteKeyup;

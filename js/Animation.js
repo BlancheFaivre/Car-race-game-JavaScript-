@@ -15,6 +15,7 @@ function animation() {
   else {
   	cpt = cpt + 10;
   }
+
   
   // 2 on dessine et on deplace
   dessineEtDeplaceLesObjets();
