@@ -15,7 +15,7 @@ function onLoadSoundWave() {
 
     canvas2 = document.querySelector("#my_music_canvas");
     width = canvas2.width;
-    height = 100;
+    height = canvas2.height;
     canvasContext = canvas2.getContext('2d');
 
     buildAudioGraph();
@@ -27,6 +27,8 @@ function onLoadSoundWave() {
 function buildAudioGraph() {
     var mediaElement = document.getElementById('player');  // Récuperer la chan
     var sourceNode = audioContext.createMediaElementSource(mediaElement);
+    mediaElement.play();
+    mediaElement.playBackRate = 0.75;
 
     analyser = audioContext.createAnalyser();   // Pour créer un noeud d'analyse
 
@@ -39,6 +41,7 @@ function buildAudioGraph() {
     analyser.connect(audioContext.destination);
 }
 
+var cptColor = Math.random() * (255 - 2) + 2;
 function visualize(){
     //canvasContext.clearRect(0, 0, width, 100);
     canvasContext.fillStyle = 'rgba(0, 0, 5, 2)';
@@ -46,8 +49,13 @@ function visualize(){
 
     analyser.getByteTimeDomainData(dataArray);  // Pour copier les données de forme d'onde ou du domaine temporel dans dataArray
 
-    canvasContext.lineWidth = 2;
-    canvasContext.strokeStyle = 'purple';
+    
+    canvasContext.lineWidth = Math.random() * (10 - 2) + 2;
+    var gradient=ctx.createLinearGradient(cptColor,0,170,cptColor);
+    gradient.addColorStop("0","magenta");
+    gradient.addColorStop("0.5","blue");
+    gradient.addColorStop("1.0","red");
+    canvasContext.strokeStyle = gradient;
 
     // all the waveform is in one single path, first let's
   // clear any previous path that could be in the buffer
@@ -72,12 +80,12 @@ function visualize(){
      x += sliceWidth;
   }
 
-  canvasContext.lineTo(canvas.width, 50);
+  canvasContext.lineTo(canvas2.width, canvas2.height / 2);
   
   // draw the path at once
   canvasContext.stroke();  
   
   // call again the visualize function at 60 frames/s
-  //requestAnimationFrame(visualize);     // On va l'enlever par la suite et rajouter à la boucle d'animation
+  requestAnimationFrame(visualize);     // On va l'enlever par la suite et rajouter à la boucle d'animation
   
 }
