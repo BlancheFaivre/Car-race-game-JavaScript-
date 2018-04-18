@@ -21,6 +21,7 @@ function animation() {
   else {
   	cpt = cpt + 10;
   }
+
   
   var voiture_bonus_gagnees = document.getElementById("voiture_bonus");
   ctx.drawImage(voiture_bonus_gagnees, 10,10, 30,50);
