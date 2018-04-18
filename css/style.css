@@ -3,7 +3,12 @@
 }
 
 #myCanvas{
+<<<<<<< HEAD
+    border:1px solid;
+	background-color:ivory;
+=======
     border:10px solid;
+>>>>>>> 4811f1e0f2a1ee3fafbbd3295058642444bf136a
   }
  /* Dropdown Button */
 .dropbtn {

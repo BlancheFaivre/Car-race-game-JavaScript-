@@ -1,25 +1,26 @@
 
-//************** TEST DES COLLISIONS ***************
 function testeCollisions() {
   testeCollisionsAvecMurs(joueur);
   testCollisionsEnnemisMurs();
-  //testCollisionJoueursEnnemis();
+  testCollisionJoueursEnnemis();
 }
 
 function dessineEtDeplaceLesObjets() {
    voitures.forEach((el) => {
      el.draw(ctx);
-    el.move();
+     el.move();
    })
+   
+   joueur.move();
+   
+  joueur.draw(ctx);
   
 }
 
-
 function testCollisionsEnnemisMurs() {
-   voitures.forEach((el) => {
+  /* voitures.forEach((el) => {
      testeCollisionsAvecMurs(el);
-   })
-   
+   })*/
   joueur.draw(ctx);
   
 }
@@ -27,34 +28,47 @@ function testeCollisionsAvecMurs(r) {
   // MURS DROITE ET GAUCHE
   
   if((r.x + r.l) > canvas.width) {
+    // detection avec mur de droite
+    // on met la vitesse horizontale a zero
     r.vitesseX = -r.vitesseX;
+    // on le remet au point de contact
     r.x = canvas.width - r.l;
   } else if((r.x) < 0) {
+    // detection avec mur de gauche
+    // on met la vitesse horizontale a zero
     r.vitesseX = -r.vitesseX;
+    // on le remet au point de contact
     r.x = 0;
   }
   
   // MURS BAS ET HAUT
   if((r.y + r.h) > canvas.height) {
+    // detection avec mur de droite
+    // on met la vitesse horizontale a zero
     r.vitesseY = -r.vitesseY;
+    // on le remet au point de contact
     r.y = canvas.height - r.h;
   } else if((r.y) < 0) {
+    // detection avec mur de gauche
+    // on met la vitesse horizontale a zero
     r.vitesseY = -r.vitesseY;
+    // on le remet au point de contact
     r.y = 0;
   }
 }
 
-/*function testCollisionJoueursEnnemis() {
+function testCollisionJoueursEnnemis() {
   voitures.forEach((el) => {
-        if(rectsOverlap(joueur.x, joueur.y, joueur.l, joueur.h,
-                 el.x, el.y, el.l, el.h)) {
-    el.couleur = 'pink';
-  } else {
-    el.couleur = 'red';
-  }      
+        if(((el.y + 50) > joueur.y)&&(el.x == joueur.x)) {
+        	collision = true;
+        	x_explosion = joueur.x - 10;
+        	y_explosion = joueur.y - 20;
+//ICI ON RAJOUTERA LE FAIT QUE LE JOUEUR PERD DES POINTS !!!!!!!!!!!!!
+    el.y = 0;
+  }    
  })
   
-}*/
+}
 
 function rectsOverlap(x1, y1, w1, h1, x2, y2, w2, h2) {
  
