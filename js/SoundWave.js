@@ -1,16 +1,5 @@
-
-// This line is a trick to initialize the AudioContext and will work on all recent browsers
-var audioCtx = window.AudioContext || window.webKitAudioContext;
-
-var canvas2;
-var audioContext;       // Initialisation de la variable de l'audio
-var canvasContext;
-var analyser;
-var width, height;
-
-var dataArray, bufferLenght;
-
 function onLoadSoundWave() {
+	if (!stop_partie) {
     audioContext = new audioCtx(); // Crée et retourne un nouvel AudioContext object
 
     canvas2 = document.querySelector("#my_music_canvas");
@@ -21,12 +10,13 @@ function onLoadSoundWave() {
     buildAudioGraph();
 
     requestAnimationFrame(visualize);
-
+	}
 }
 
 function buildAudioGraph() {
-    var mediaElement = document.getElementById('player');  // Récuperer la chan
-    var sourceNode = audioContext.createMediaElementSource(mediaElement);
+    mediaElement = document.getElementById('player');  // Récuperer la chan
+    sourceNode = audioContext.createMediaElementSource(mediaElement);
+    
     mediaElement.play();
     mediaElement.playBackRate = 0.75;
 
@@ -43,6 +33,7 @@ function buildAudioGraph() {
 
 var cptColor = Math.random() * (255 - 2) + 2;
 function visualize(){
+	if ((!stop_partie)&&(!pause_partie)) {
     //canvasContext.clearRect(0, 0, width, 100);
     canvasContext.fillStyle = 'rgba(0, 0, 5, 2)';
     canvasContext.fillRect(0, 0, width, 100);
@@ -84,7 +75,7 @@ function visualize(){
   
   // draw the path at once
   canvasContext.stroke();  
-  
+ }
   // call again the visualize function at 60 frames/s
   requestAnimationFrame(visualize);     // On va l'enlever par la suite et rajouter à la boucle d'animation
   

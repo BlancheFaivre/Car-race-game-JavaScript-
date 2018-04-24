@@ -24,7 +24,12 @@ class Voiture {
   
   move() {
     this.x += this.vitesseX;
-    if (this.y < canvas.height) this.y +=this.vitesseY;
-    else this.y = -20;
+    if (this.y < canvas.height) {this.y +=this.vitesseY;}
+    else {
+    	var index = voitures.indexOf(this);
+    	if (index >-1){
+    		voitures.splice(index,1);
+    	}
+    }
   }
 }

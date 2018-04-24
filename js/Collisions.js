@@ -64,7 +64,6 @@ function testeCollisionsAvecMurs(r) {
 
 function testCollisionJoueursEnnemis() {
   voitures.forEach((el) => {
-  //ATTention revoir le if parce que il doit plutôt etre
         if((((el.y + 50) > joueur.y)&&(el.y + 50 < joueur.y + 50))&&(el.x == joueur.x)) {
         	collision = true;
         	x_explosion = joueur.x - 10;
@@ -80,10 +79,8 @@ function testCollisionJoueursEnnemis() {
  })
   
   voitures_bonus.forEach((el) => {
-  //ATTention revoir le if parce que il doit plutôt etre
         if((((el.y + 50) > joueur.y)&&(el.y + 50 < joueur.y + 50))&&(el.x == joueur.x)) {
         nb_voitures_gagnees += 1;
-//ICI ON RAJOUTERA LE FAIT QUE LE JOUEUR PERD DES POINTS !!!!!!!!!!!!!
     el.y = 0;
   }    
  })

@@ -31,19 +31,28 @@ Released under the MIT license: http://jsbin.mit-license.org
 <img id="explosion" src="explosion.png">
 </div>
   <div class="dropdown">
-  	<button onclick="my_function()" class="dropbtn">Replay</button>
-  	<div id="my_button" class="dropdown-content">
-  	</div>
+  	<button id="replay_btn" onclick="my_function()" class="dropbtn">Replay</button>
+  	<script type="text/javascript">
+		var buttons = document.getElementById("replay_btn");
+		buttons.innerHTML = '<img src="replay.png" width="65" height="65"/>';
+  	</script>
+	</div> 
+	<div class="pause">
+  	<button id="pause_btn" onclick="pause_function()" value="pause" class="pausebtn">Pause</button>
+  	<script type="text/javascript">
+		var buttons = document.getElementById("pause_btn");
+		buttons.innerHTML = '<img src="pause.png" width="50" height="50"/>';
+  	</script>
 	</div> 
 </head>
 <body>
     <audio id="player"
     loop 
     crossorigin="anonymous">
-    <source src="Akwaaba.mp3" type="audio/mpeg">
+    <source src="music.mp3" type="audio/mpeg">
     <source src="http://mainline.i3s.unice.fr/mooc/LaSueur.mp3">
 </audio>
-  <canvas id="myCanvas" width=600 height=800></canvas>
-  <canvas id="my_music_canvas" width=600 height=100></canvas>
+  <canvas id="myCanvas" width=600 height=800 align="center"></canvas>
+  <canvas id="my_music_canvas" width=600 height=100 ></canvas>
 </body>
 </html>
