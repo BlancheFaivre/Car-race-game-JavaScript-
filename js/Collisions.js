@@ -10,16 +10,16 @@ function dessineEtDeplaceLesObjets() {
      el.draw(ctx);
      el.move();
    })
-   
+
    voitures_bonus.forEach((el) => {
      el.draw(ctx);
      el.move();
    })
-   
+
    joueur.move();
-   
+
   joueur.draw(ctx);
-  
+
 }
 
 function testCollisionsEnnemisMurs() {
@@ -27,11 +27,11 @@ function testCollisionsEnnemisMurs() {
      testeCollisionsAvecMurs(el);
    })*/
   joueur.draw(ctx);
-  
+
 }
 function testeCollisionsAvecMurs(r) {
   // MURS DROITE ET GAUCHE
-  
+
   if((r.x + r.l) > canvas.width) {
     // detection avec mur de droite
     // on met la vitesse horizontale a zero
@@ -45,7 +45,7 @@ function testeCollisionsAvecMurs(r) {
     // on le remet au point de contact
     r.x = 0;
   }
-  
+
   // MURS BAS ET HAUT
   if((r.y + r.h) > canvas.height) {
     // detection avec mur de droite
@@ -75,19 +75,19 @@ function testCollisionJoueursEnnemis() {
         		ctx.fillText("Votre score est de " + score.toString() + " !", 150, 310);
         }
     el.y = 0;
-  }    
+  }
  })
-  
+
   voitures_bonus.forEach((el) => {
         if((((el.y + 50) > joueur.y)&&(el.y + 50 < joueur.y + 50))&&(el.x == joueur.x)) {
         nb_voitures_gagnees += 1;
-    el.y = 0;
-  }    
+      el.y = 0;
+  }
  })
 }
 
 function rectsOverlap(x1, y1, w1, h1, x2, y2, w2, h2) {
- 
+
   if ((x1 > (x2 + w2)) || ((x1 + w1) < x2))
      return false; // No horizontal axis projection overlap
   if ((y1 > (y2 + h2)) || ((y1 + h1) < y2))

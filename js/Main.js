@@ -27,6 +27,7 @@ let voitures = [];
 let voitures_bonus = [];
 let x_ennemi, y_ennemi;
 let niveau = 0;
+let frequence_envoi = 180;
 
 
 function my_function(){
@@ -36,9 +37,9 @@ function my_function(){
 function pause_function(){
 	var text = document.getElementById("pause_btn").firstChild;
 	text.data = text.data == "Pause" ? "Play" : "Pause";
-	
+
 	var buttons = document.getElementById("pause_btn");
-	
+
 	if (document.getElementById("pause_btn").value == "pause"){
 		buttons.innerHTML = '<img src="play.png" width="50" height="50"/>';
 		document.getElementById("pause_btn").value = "play";
@@ -47,7 +48,7 @@ function pause_function(){
 		buttons.innerHTML = '<img src="pause.png" width="50" height="50"/>';
 		document.getElementById("pause_btn").value = "pause";
 	}
-	
+
 	if (!pause_partie){
 		mediaElement.pause();
 	}
@@ -60,28 +61,28 @@ function pause_function(){
 // main.js
 function init() {
   console.log("page chargee");
-  
+
   // 1 On recupere un pointeur sur le canvas
   canvas = document.querySelector("#myCanvas");
-  
+
   // 2 On recupere le contexte graphique pour dessiner
   // dans le canvas
   ctx = canvas.getContext("2d");
 
   // Gestion SoundWave
 	onLoadSoundWave();
-  
+
   ennemi = new Voiture(200, 50, 0, 0, 0, 'black');
   ennemi.vitesseY = 3;
   voitures.push(ennemi);
-  
-  
+
+
   bonus = new Voiture(50, 50, 0, 0, 0, 'black');
   bonus.vitesseY = 3;
   voitures_bonus.push(bonus);
-  
+
   joueur = new Voiture(370, 500, 0, 0, 0,'black');
-  
+
   // Ecouteurs de clavier
   window.onkeydown = traiteKeydown;
   window.onkeyup = traiteKeyup;

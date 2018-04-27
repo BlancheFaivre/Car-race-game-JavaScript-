@@ -12,16 +12,16 @@ class Voiture {
     this.vitesseMax = 8;
 
   }
-  
+
   draw(ctx) {
     ctx.save();
-    
+
     ctx.fillStyle = this.couleur;
     ctx.fillRect(this.x, this.y, this.l, this.h);
-    
+
     ctx.restore();
   }
-  
+
   move() {
     this.x += this.vitesseX;
     if (this.y < canvas.height) {this.y +=this.vitesseY;}
