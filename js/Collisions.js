@@ -72,13 +72,13 @@ function testCollisionJoueursEnnemis() {
       collision = true;
       x_explosion = joueur.x - 10;
       y_explosion = joueur.y - 20;
-      if (nb_voitures_gagnees > 0) {nb_voitures_gagnees -= 1;}
+      if (nb_vies > 0) {nb_vies -= 1;}
       else {
       	stop_partie = true;
       	ctx.fillText("PERDU !", 260, 260);
       	ctx.fillText("Votre score est de " + score.toString() + " !", 150, 310);
       }
-      if (nb_voitures_gagnees > 0) {
+      if (nb_vies > 0) {
         var index = voitures.indexOf(el);
     	   if (index >-1){
     		     voitures.splice(index,1);
@@ -86,7 +86,7 @@ function testCollisionJoueursEnnemis() {
       }
     }
     missiles.forEach((mi)=>{
-      if ((el.x + 20 == mi.x)&&(el.y <= mi.y + 20)&&(el.y >= mi.y - 20)){
+      if ((el.x + 15 == mi.x)&&(el.y <= mi.y + 20)&&(el.y >= mi.y - 20)){
         console.log("missile x : " + mi.x);
         console.log("missile y : " + mi.y);
         console.log("voiture x : " + el.x);

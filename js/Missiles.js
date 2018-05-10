@@ -3,8 +3,8 @@ class Missile {
   constructor(x, y, l, h, R, couleur) {
     this.x = x || 0;
     this.y = y || 0;
-    this.l = l || 3;
-    this.h = h || 3;
+    this.l = l || 0;
+    this.h = h || 0;
     this.couleur = couleur || 'black';
     this.vitesseX = 0; // en pixels par image d'animation
     this.vitesseY = 0; // en pixels par image d'animation

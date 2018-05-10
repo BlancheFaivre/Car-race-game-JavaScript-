@@ -12,8 +12,10 @@ function animation() {
 	if ((!stop_partie)&&(!pause_partie)) {
 		cpt_tours ++;
 
-		if (missile_lance){
-			missile = new Missile(joueur.x + 20, joueur.y, 10,10, 0, 'red');
+
+		if ((nb_voitures_gagnees > 0)&&(missile_lance)){
+			nb_voitures_gagnees--;
+			missile = new Missile(joueur.x + 15, joueur.y - 50, 0,0, 0, 'red');
 			missile.vitesseY = 4;
 			missiles.push(missile);
 			missile_lance = false;
@@ -81,15 +83,21 @@ function animation() {
 
 		 voitures_bonus.forEach((el) => {
 		 		var voiture_bonus = document.getElementById("voiture_bonus");
-		 		ctx.drawImage(voiture_bonus, el.x,el.y, 50,80);
+		 		ctx.drawImage(voiture_bonus, el.x,el.y, 70,90);
+		 })
+
+		 missiles.forEach((el)=>{
+ 			var image_missile = document.getElementById("img_missile");
+ 			ctx.drawImage(image_missile, missile.x, missile.y, 20, 40);
 		 })
 
 		var voiture_bonus_gagnees = document.getElementById("voiture_bonus");
-		ctx.drawImage(voiture_bonus_gagnees, 10,10, 30,50);
+		ctx.drawImage(voiture_bonus_gagnees, 10,10, 40,60);
 		ctx.fillText(nb_voitures_gagnees.toString(), 15, 90);
 
 		var voiture_joueur = document.getElementById("voiture_joueur");
 		ctx.drawImage(voiture_joueur, joueur.x,joueur.y, 50,80);
+
 
 
 	//
@@ -112,6 +120,21 @@ function animation() {
 		else if ((score >= 10000)&&(score < 100000)) n = 495;
 		else n = 475;
 		ctx.fillText(score.toString(), n, 60);
+
+		var img_heart, img_heart2, img_heart3;
+		//HEARTS
+		if (nb_vies >= 2){img_heart2 = document.getElementById("heart");ctx.drawImage(img_heart2, 525,80, 30,40);}
+		else {img_heart2 = document.getElementById("heart_empty");ctx.drawImage(img_heart2, 525,76, 30,47);}
+
+		if (nb_vies >= 3){img_heart3 = document.getElementById("heart");	ctx.drawImage(img_heart3, 555,80, 30,40);}
+		else {img_heart3 = document.getElementById("heart_empty");	ctx.drawImage(img_heart3, 555,76, 30,47);}
+
+		if (nb_vies >= 1){img_heart = document.getElementById("heart");ctx.drawImage(img_heart, 495,80, 30,40);}
+		else {img_heart = document.getElementById("heart_empty");ctx.drawImage(img_heart, 495,76, 30,47);}
+
+
+
+
 
 		//ctx_nv.font = "20px Sawasdee";
 		//ctx_nv.fillText("Nv. " + niveau, 10, 10);
