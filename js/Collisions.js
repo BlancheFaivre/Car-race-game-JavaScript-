@@ -17,8 +17,12 @@ function dessineEtDeplaceLesObjets() {
    })
 
    joueur.move();
+   missiles.forEach((el) => {
+     el.draw(ctx);
+     el.move();
+   })
 
-  joueur.draw(ctx);
+   joueur.draw(ctx);
 
 }
 
@@ -64,26 +68,52 @@ function testeCollisionsAvecMurs(r) {
 
 function testCollisionJoueursEnnemis() {
   voitures.forEach((el) => {
-        if((((el.y + 50) > joueur.y)&&(el.y + 50 < joueur.y + 50))&&(el.x == joueur.x)) {
-        	collision = true;
-        	x_explosion = joueur.x - 10;
-        	y_explosion = joueur.y - 20;
-        	if (nb_voitures_gagnees > 0) {nb_voitures_gagnees -= 1;}
-        	else {
-        		stop_partie = true;
-        		ctx.fillText("PERDU !", 260, 260);
-        		ctx.fillText("Votre score est de " + score.toString() + " !", 150, 310);
-        }
-    el.y = 0;
-  }
+    if((((el.y + 50) > joueur.y)&&(el.y + 50 < joueur.y + 50))&&(el.x == joueur.x)) {
+      collision = true;
+      x_explosion = joueur.x - 10;
+      y_explosion = joueur.y - 20;
+      if (nb_voitures_gagnees > 0) {nb_voitures_gagnees -= 1;}
+      else {
+      	stop_partie = true;
+      	ctx.fillText("PERDU !", 260, 260);
+      	ctx.fillText("Votre score est de " + score.toString() + " !", 150, 310);
+      }
+      if (nb_voitures_gagnees > 0) {
+        var index = voitures.indexOf(el);
+    	   if (index >-1){
+    		     voitures.splice(index,1);
+    	   }
+      }
+    }
+    missiles.forEach((mi)=>{
+      if ((el.x + 20 == mi.x)&&(el.y <= mi.y + 20)&&(el.y >= mi.y - 20)){
+        console.log("missile x : " + mi.x);
+        console.log("missile y : " + mi.y);
+        console.log("voiture x : " + el.x);
+        console.log("voiture y : " + el.y);
+        var index = voitures.indexOf(el);
+         if (index >-1){
+             voitures.splice(index,1);
+         }
+         var index2 = missiles.indexOf(mi);
+          if (index2 >-1){
+              missiles.splice(index2,1);
+          }
+      }
+    })
  })
 
   voitures_bonus.forEach((el) => {
-        if((((el.y + 50) > joueur.y)&&(el.y + 50 < joueur.y + 50))&&(el.x == joueur.x)) {
-        nb_voitures_gagnees += 1;
-      el.y = 0;
-  }
+    if((((el.y + 50) > joueur.y)&&(el.y + 50 < joueur.y + 50))&&(el.x == joueur.x)) {
+      nb_voitures_gagnees += 1;
+      var index = voitures_bonus.indexOf(el);
+    	if (index >-1){
+    		voitures_bonus.splice(index,1);
+    	}
+
+    }
  })
+
 }
 
 function rectsOverlap(x1, y1, w1, h1, x2, y2, w2, h2) {

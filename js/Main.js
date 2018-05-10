@@ -12,6 +12,7 @@ var width, height;
 var mediaElement;
 var sourceNode;
 
+var missile_lance = false;
 var dataAsrray, bufferLenght;
 let collision = false;
 let stop_partie = false;
@@ -21,13 +22,17 @@ let x_explosion = 0;
 let y_explosion = 0;
 let cpt = 0;
 let canvas, ctx;
+let ctx_nv;
 let score = 0;
 let nb_voitures_gagnees = 0;
 let voitures = [];
 let voitures_bonus = [];
+let missiles = [];
 let x_ennemi, y_ennemi;
+let x_bonus, y_bonus;
 let niveau = 0;
-let frequence_envoi = 180;
+let frequence_envoi_ennemis = 200;
+let frequence_envoi_bonus = 500;
 
 
 function my_function(){
@@ -64,10 +69,12 @@ function init() {
 
   // 1 On recupere un pointeur sur le canvas
   canvas = document.querySelector("#myCanvas");
+	//canvas2 = document.querySelector("#my_music_canvas");
 
   // 2 On recupere le contexte graphique pour dessiner
   // dans le canvas
   ctx = canvas.getContext("2d");
+	//ctx_nv = canvas2.getContext("2d");
 
   // Gestion SoundWave
 	onLoadSoundWave();

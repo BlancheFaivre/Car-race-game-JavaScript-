@@ -1,13 +1,14 @@
 
 //50 200     370 520
 
+
 function traiteKeydown(evt) {
   let code = evt.code;
   switch(code) {
     case 'ArrowRight':
       // on va vers la droite
       switch(joueur.x) {
-      	case 50 : 
+      	case 50 :
       		joueur.x = 200;
       		break;
       	case 200 :
@@ -15,14 +16,14 @@ function traiteKeydown(evt) {
       		break;
       	case 370 :
       		joueur.x = 520;
-      		break; 
+      		break;
       }
       break;
     case 'ArrowLeft':
       // on va vers la gauche
       //joueur.vitesseX = -joueur.vitesseMax;
       switch(joueur.x) {
-      	case 200 : 
+      	case 200 :
       		joueur.x = 50;
       		break;
       	case 370 :
@@ -30,7 +31,7 @@ function traiteKeydown(evt) {
       		break;
       	case 520 :
       		joueur.x = 370;
-      		break; 
+      		break;
       }
       break;
     case 'ArrowUp':
@@ -41,12 +42,15 @@ function traiteKeydown(evt) {
       // on va vers la gauche
       joueur.vitesseY = joueur.vitesseMax;
       break;
+    case 'Space' :
+      missile_lance = true;
+      break;
   }
 }
 
 function traiteKeyup(evt) {
   let code = evt.code;
-  
+
   switch(code) {
     case 'ArrowRight':
     case 'ArrowLeft':

@@ -1,11 +1,10 @@
-
 //***************** VOITURES ************************
-class Voiture {
+class Missile {
   constructor(x, y, l, h, R, couleur) {
     this.x = x || 0;
     this.y = y || 0;
-    this.l = l || 0;
-    this.h = h || 0;
+    this.l = l || 3;
+    this.h = h || 3;
     this.couleur = couleur || 'black';
     this.vitesseX = 0; // en pixels par image d'animation
     this.vitesseY = 0; // en pixels par image d'animation
@@ -23,14 +22,13 @@ class Voiture {
   }
 
   move() {
-    this.x += this.vitesseX;
-    if (this.y < canvas.height) {this.y +=this.vitesseY;}
+    this.x -= this.vitesseX;
+    if (this.y >= 0) {this.y -=this.vitesseY;}
     else {
-    	var index = voitures.indexOf(this);
+    	var index = missiles.indexOf(this);
     	if (index >-1){
-    		voitures.splice(index,1);
+    		missiles.splice(index,1);
     	}
     }
   }
-
 }

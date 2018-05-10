@@ -12,6 +12,7 @@ Released under the MIT license: http://jsbin.mit-license.org
   <link rel="stylesheet" href="css/style.css">
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="js/Voitures.js"></script>
+  <script src="js/Missiles.js"></script>
   <script src="js/Collisions.js"></script>
   <script src="js/Animation.js"></script>
   <script src="js/Gestion_evennements.js"></script>
@@ -36,18 +37,18 @@ Released under the MIT license: http://jsbin.mit-license.org
 		var buttons = document.getElementById("replay_btn");
 		buttons.innerHTML = '<img src="replay.png" width="65" height="65"/>';
   	</script>
-	</div> 
+	</div>
 	<div class="pause">
   	<button id="pause_btn" onclick="pause_function()" value="pause" class="pausebtn">Pause</button>
   	<script type="text/javascript">
 		var buttons = document.getElementById("pause_btn");
 		buttons.innerHTML = '<img src="pause.png" width="50" height="50"/>';
   	</script>
-	</div> 
+	</div>
 </head>
 <body>
     <audio id="player"
-    loop 
+    loop
     crossorigin="anonymous">
     <source src="music.mp3" type="audio/mpeg">
     <source src="http://mainline.i3s.unice.fr/mooc/LaSueur.mp3">
