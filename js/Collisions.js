@@ -68,15 +68,20 @@ function testeCollisionsAvecMurs(r) {
 
 function testCollisionJoueursEnnemis() {
   voitures.forEach((el) => {
-    if((((el.y + 50) > joueur.y)&&(el.y + 50 < joueur.y + 50))&&(el.x == joueur.x)) {
+    if((((el.y + 50) > joueur.y)&&(el.y < joueur.y + 50))&&(el.x == joueur.x)) {
       collision = true;
       x_explosion = joueur.x - 10;
       y_explosion = joueur.y - 20;
       if (nb_vies > 0) {nb_vies -= 1;}
       else {
-      	stop_partie = true;
-      	ctx.fillText("PERDU !", 260, 260);
-      	ctx.fillText("Votre score est de " + score.toString() + " !", 150, 310);
+      	go_fin = true;
+        ctx_fin.font = "60px Georgia";
+      	ctx_fin.fillText("PERDU !", 170, 260);
+      	ctx_fin.fillText("Votre score est de ", 10, 310);
+        if (score < 100)ctx_fin.fillText(score.toString(), 260, 380);
+        else if (score < 1000) ctx_fin.fillText(score.toString(), 240, 380);
+        else if (score < 10000) ctx_fin.fillText(score.toString(), 210, 380);
+        else ctx_fin.fillText(score.toString(), 230, 380);
       }
       if (nb_vies > 0) {
         var index = voitures.indexOf(el);
@@ -86,11 +91,8 @@ function testCollisionJoueursEnnemis() {
       }
     }
     missiles.forEach((mi)=>{
-      if ((el.x + 15 == mi.x)&&(el.y <= mi.y + 20)&&(el.y >= mi.y - 20)){
-        console.log("missile x : " + mi.x);
-        console.log("missile y : " + mi.y);
-        console.log("voiture x : " + el.x);
-        console.log("voiture y : " + el.y);
+      if ((el.x + 15 == mi.x)&&(el.y <= mi.y + 20)&&(el.y >= mi.y - 60)){
+        nb_voitures_rouges_tuees++;
         var index = voitures.indexOf(el);
          if (index >-1){
              voitures.splice(index,1);

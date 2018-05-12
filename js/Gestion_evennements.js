@@ -43,7 +43,7 @@ function traiteKeydown(evt) {
       joueur.vitesseY = joueur.vitesseMax;
       break;
     case 'Space' :
-      missile_lance = true;
+      if (nb_voitures_gagnees > 0) missile_lance = true;
       break;
   }
 }

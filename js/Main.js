@@ -20,6 +20,7 @@ let pause_partie = false;
 let cpt_tours = 0;
 let x_explosion = 0;
 let y_explosion = 0;
+let nb_voitures_rouges_tuees = 0;
 let cpt = 0;
 let canvas, ctx;
 let ctx_nv;
@@ -32,8 +33,9 @@ let missiles = [];
 let x_ennemi, y_ennemi;
 let x_bonus, y_bonus;
 let niveau = 0;
-let frequence_envoi_ennemis = 200;
-let frequence_envoi_bonus = 500;
+let frequence_envoi_ennemis = 100;
+let frequence_envoi_bonus = 300;
+let go_fin = false;
 
 
 function my_function(){
@@ -41,6 +43,7 @@ function my_function(){
 }
 
 function pause_function(){
+	console.log("pause");
 	var text = document.getElementById("pause_btn").firstChild;
 	text.data = text.data == "Pause" ? "Play" : "Pause";
 
@@ -70,12 +73,14 @@ function init() {
 
   // 1 On recupere un pointeur sur le canvas
   canvas = document.querySelector("#myCanvas");
-	//canvas2 = document.querySelector("#my_music_canvas");
+	canvas2 = document.querySelector("#my_music_canvas");
+	canvas_fin = document.querySelector("#myCanvas");
 
   // 2 On recupere le contexte graphique pour dessiner
   // dans le canvas
   ctx = canvas.getContext("2d");
-	//ctx_nv = canvas2.getContext("2d");
+	ctx_nv = canvas2.getContext("2d");
+	ctx_fin = canvas_fin.getContext("2d");
 
   // Gestion SoundWave
 	onLoadSoundWave();

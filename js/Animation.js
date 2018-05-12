@@ -10,8 +10,14 @@ function no_ennemis_en_vue(){
 // typiquement dans game.js
 function animation() {
 	if ((!stop_partie)&&(!pause_partie)) {
+		ctx.font = "30px Sawasdee";
+		ctx.fillStyle = "white";
 		cpt_tours ++;
 
+		if (go_fin){
+			stop_partie = true;
+			console.log("fin");
+		}
 
 		if ((nb_voitures_gagnees > 0)&&(missile_lance)){
 			nb_voitures_gagnees--;
@@ -30,6 +36,7 @@ function animation() {
 		if (cpt_tours%5 == 0) score++;
 		// 1 on efface
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
+
 
 		var image_route = document.getElementById("route");
 		ctx.drawImage(image_route, 0, 0 + cpt, canvas.width, canvas.height);
@@ -88,17 +95,26 @@ function animation() {
 
 		 missiles.forEach((el)=>{
  			var image_missile = document.getElementById("img_missile");
- 			ctx.drawImage(image_missile, missile.x, missile.y, 20, 40);
+ 			ctx.drawImage(image_missile, el.x, el.y, 20, 40);
 		 })
 
 		var voiture_bonus_gagnees = document.getElementById("voiture_bonus");
 		ctx.drawImage(voiture_bonus_gagnees, 10,10, 40,60);
-		ctx.fillText(nb_voitures_gagnees.toString(), 15, 90);
+		ctx.fillText(nb_voitures_gagnees.toString(), 55, 50);
+
+		//ICIIIIIIIIIIIIIIIIIII
+		var voiture_rouges_tuees = document.getElementById("voiture_ennemie");
+		ctx.drawImage(voiture_rouges_tuees, 20, 80, 25, 40);
+		ctx.fillText(nb_voitures_rouges_tuees, 55, 110, 55, 50);
 
 		var voiture_joueur = document.getElementById("voiture_joueur");
 		ctx.drawImage(voiture_joueur, joueur.x,joueur.y, 50,80);
 
+		var img_pause = document.getElementById("essai_pause");
+		ctx_nv.drawImage(img_pause, 555, 0, 40,40);
 
+		var img_replay = document.getElementById("replay");
+		ctx_nv.drawImage(img_replay, 505, -6, 55,55);
 
 	//
 	//	ctx.drawImage(missile, missile.x, missile.y, 50,80);
@@ -110,8 +126,6 @@ function animation() {
 			collision = false;
 		}
 		var n = 500;
-		ctx.font = "30px Sawasdee";
-		ctx.fillStyle = "white";
 		ctx.fillText("Score", 500,30);
 		if (score < 10) n = 530;
 		else if ((score >= 10)&&(score < 100)) n = 520;
