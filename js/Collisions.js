@@ -96,6 +96,7 @@ function testCollisionJoueursEnnemis() {
     missiles.forEach((mi)=>{
       if ((el.x + 15 == mi.x)&&(el.y <= mi.y + 20)&&(el.y >= mi.y - 60)){
         nb_voitures_rouges_tuees++;
+        score += 10;
         var index = voitures.indexOf(el);
          if (index >-1){
              voitures.splice(index,1);

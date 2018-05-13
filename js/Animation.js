@@ -31,10 +31,10 @@ function animation() {
 			}
 
 			switch(cpt_tours){
-				case 1000 : niveau=1; frequence_envoi_ennemis -= 100; break;
-				case 2500 : niveau=2; frequence_envoi_ennemis -= 100;break;
-				case 5000 : niveau=3; frequence_envoi_ennemis -= 100;break;
-				case 10000 : niveau=4; frequence_envoi_ennemis -= 100;break;
+				case 1000 : niveau=1; frequence_envoi_ennemis -= 100; mediaElement.playbackRate += 0.1; break;
+				case 2500 : niveau=2; frequence_envoi_ennemis -= 100; mediaElement.playbackRate += 0.1; break;
+				case 5000 : niveau=3; frequence_envoi_ennemis -= 100; mediaElement.playbackRate += 0.1; break;
+				case 10000 : niveau=4; frequence_envoi_ennemis -= 100; mediaElement.playbackRate += 0.1; break;
 			}
 			if (cpt_tours%5 == 0) score++;
 			// 1 on efface
