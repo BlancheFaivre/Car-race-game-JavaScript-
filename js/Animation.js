@@ -1,7 +1,7 @@
 function no_ennemis_en_vue(){
 	voitures.forEach((el) => {
 		console.log("y : " + el.y);
-		if (el.y > 600) return false;
+		if (el.y <= 200) return false;
 	});
 	return true;
 }
@@ -17,10 +17,6 @@ function animation() {
 			ctx.font = "30px Sawasdee";
 			ctx.fillStyle = "white";
 
-			if (go_fin){
-				stop_partie = true;
-				console.log("fin");
-			}
 
 			if ((nb_voitures_gagnees > 0)&&(missile_lance)){
 				nb_voitures_gagnees--;
@@ -63,15 +59,17 @@ function animation() {
 			}
 
 			//var rand = Math.floor((Math.random() * frequence_envoi_ennemis) + 1);
-			if ((cpt % frequence_envoi_ennemis == 0) &&(no_ennemis_en_vue())){
-				var r = Math.floor((Math.random() * 4) + 1);
-				if (r == 1) x_ennemi = 50;
-				else if (r == 2) x_ennemi = 200;
-				else if (r == 3) x_ennemi = 370;
-				else x_ennemi = 520;
-				ennemi1 = new Voiture(x_ennemi, 0, 0, 0, 0, 'black', 0);
-				ennemi1.vitesseY = 3;
-				voitures.push(ennemi1);
+			if (cpt % frequence_envoi_ennemis == 0){
+				if (no_ennemis_en_vue()){
+					var r = Math.floor((Math.random() * 4) + 1);
+					if (r == 1) x_ennemi = 50;
+					else if (r == 2) x_ennemi = 200;
+					else if (r == 3) x_ennemi = 370;
+					else x_ennemi = 520;
+					ennemi1 = new Voiture(x_ennemi, 0, 0, 0, 0, 'black', 0);
+					ennemi1.vitesseY = 3;
+					voitures.push(ennemi1);
+				}
 			}
 
 			//var rand = Math.floor((Math.random() * frequence_envoi_bonus) + 1);
@@ -113,11 +111,11 @@ function animation() {
 			var voiture_joueur = document.getElementById("voiture_joueur");
 			ctx.drawImage(voiture_joueur, joueur.x,joueur.y, 50,80);
 
-			var img_pause = document.getElementById("essai_pause");
+			/*var img_pause = document.getElementById("essai_pause");
 			ctx_nv.drawImage(img_pause, 555, 0, 40,40);
 
 			var img_replay = document.getElementById("replay");
-			ctx_nv.drawImage(img_replay, 505, -6, 55,55);
+			ctx_nv.drawImage(img_replay, 505, -6, 55,55);*/
 
 		//
 		//	ctx.drawImage(missile, missile.x, missile.y, 50,80);
@@ -168,7 +166,7 @@ function animation() {
 		}
 		// 4 on rappelle la boucle d'animation 60 fois / s
 	}
-	else {
+	else if ((stop_partie)||(!pause_partie)){
 		var image_route = document.getElementById("route");
 		ctx.drawImage(image_route, 0, 0 + cpt, canvas.width, canvas.height);
 
@@ -189,14 +187,22 @@ function animation() {
 			}
 			//cpt += 10;
 		}
-		ctx.fillText("Règles du jeu", 220,50);
+		ctx.fillText("Règles du jeu", 210,50);
 		ctx.fillText("Bougez avec les flèches", 20,150);
 		img_fleches = document.getElementById("fleches"); ctx.drawImage(img_fleches,370, 110, 50, 50);
 		ctx.fillText("Lancez des missiles ", 20,200);
 		img_space = document.getElementById("space"); ctx.drawImage(img_space,370, 170, 50, 50);
 		ctx.fillText("But : Détruisez le plus de voitures rouges", 20,250);
-		ctx.fillText("et allez le plus loin possible", 20,270);
+		ctx.fillText("et allez le plus loin possible", 20,280);
 		ctx.fillText("Appuyez sur entrée pour commencer !", 20,370);
+		ctx.font = "50px Sawasdee";
+		if(cpt_tours %50 == 0) {
+			afficher_entrer = !afficher_entrer;
+		}
+		if(afficher_entrer) {
+			ctx.fillText("ENTRER", 210, 420);
+		}
+
 	}
 	requestAnimationFrame(animation);
 }
