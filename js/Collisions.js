@@ -17,6 +17,7 @@ function dessineEtDeplaceLesObjets() {
    })
 
    joueur.move();
+   // Pour empecher la voiture de sombrer vers le bas
    if (joueur.y > canvas.height - 100) {joueur.y = canvas.height - 100;}
 
    missiles.forEach((el) => {

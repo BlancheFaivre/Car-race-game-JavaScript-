@@ -24,7 +24,7 @@ function animation() {
 
 			if ((nb_voitures_gagnees > 0)&&(missile_lance)){
 				nb_voitures_gagnees--;
-				missile = new Missile(joueur.x + 15, joueur.y - 50, 0,0, 0, 'red');
+				missile = new Voiture(joueur.x + 15, joueur.y - 50, 0,0, 0, 'red', 1);
 				missile.vitesseY = 4;
 				missiles.push(missile);
 				missile_lance = false;
@@ -69,7 +69,7 @@ function animation() {
 				else if (r == 2) x_ennemi = 200;
 				else if (r == 3) x_ennemi = 370;
 				else x_ennemi = 520;
-				ennemi1 = new Voiture(x_ennemi, 0, 0, 0, 0, 'black');
+				ennemi1 = new Voiture(x_ennemi, 0, 0, 0, 0, 'black', 0);
 				ennemi1.vitesseY = 3;
 				voitures.push(ennemi1);
 			}
@@ -81,7 +81,7 @@ function animation() {
 				else if (r == 2) x_bonus = 200;
 				else if (r == 3) x_bonus = 370;
 				else x_bonus = 520;
-				bonus1 = new Voiture(x_bonus, 0, 0, 0, 0, 'black');
+				bonus1 = new Voiture(x_bonus, 0, 0, 0, 0, 'black', 0);
 				bonus1.vitesseY = 3;
 				voitures_bonus.push(bonus1);
 			}
