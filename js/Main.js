@@ -33,9 +33,10 @@ let missiles = [];
 let x_ennemi, y_ennemi;
 let x_bonus, y_bonus;
 let niveau = 0;
-let frequence_envoi_ennemis = 100;
-let frequence_envoi_bonus = 300;
+let frequence_envoi_ennemis = 1000;
+let frequence_envoi_bonus = 3000;
 let go_fin = false;
+let joueur_appuye_sur_commencer = false;
 
 
 function my_function(){
