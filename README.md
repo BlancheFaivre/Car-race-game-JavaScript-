@@ -23,7 +23,8 @@ Blanche :
 - Implémentation du score
 - Implémentation du menu initial (règle du jeu)
 - Implémentation des vies du joueur (3 au début du jeu)
-- Implémentation de l'affichage du nombre de missiles récupérés et de voitures rouges détruites (à faire : + prise en compte dans le score final)
+- Implémentation de l'affichage du nombre de missiles récupérés et de voitures rouges détruites
+- Affichage du score final 
 
 Mohamed :
 -
