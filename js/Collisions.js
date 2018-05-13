@@ -17,6 +17,8 @@ function dessineEtDeplaceLesObjets() {
    })
 
    joueur.move();
+   if (joueur.y > canvas.height - 100) {joueur.y = canvas.height - 100;}
+
    missiles.forEach((el) => {
      el.draw(ctx);
      el.move();
