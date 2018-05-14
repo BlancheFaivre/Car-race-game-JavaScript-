@@ -26,10 +26,10 @@ Blanche :
 - Implémentation de l'affichage du nombre de missiles récupérés et de voitures rouges détruites (à faire : + prise en compte dans le score final)
 
 Mohamed :
--
--
--
--
+- Implémentation de la SoundWave
+- Gestion de la cadence de la musique selon le niveau d'avancement dans le jeu
+- Implémentation de la voiture (à chaque changement de niveau on a une voiture folle qui fonce sur le joueur)
+- Implémentation de la récupération de vie et mise à joueur du nombre de vie
 -
 
 
@@ -41,7 +41,7 @@ Mohamed :
 
 -------- Points faibles -----------
 - Les niveaux ne sont pas assez marqués ce qui fait que le jeu peut paraître monotone pour certains
-- Il manque quelques sons en plus, comme par exemple lorsque la voiture entre en collision avec une autre voiture ou lorsque le joueur attrape un missile
+- Il manque quelques sons en plus, comme par exemple lorsque la voiture entre en collision avec une autre voiture ou lorsque le joueur attrape un missile ou une vie
 
 
 -------- Ce qui nous a ralenti ou posé problème ----------
@@ -50,5 +50,3 @@ Blanche :
 Ce qui a été compliqué a été de devoir apprendre un nouveau langage, mais finalement c'est un langage très agréable à utiliser !
 J'ai beaucoup aimé coder ce jeu, même si le peu de temps a fait que je n'ai pas pu finir le jeu comme je le voulais...(niveaux un peu plus marqués,
 jeu plus difficile, plus de choses à faire au cours du jeu...)
-
-Mohamed : 
