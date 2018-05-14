@@ -22,30 +22,7 @@ class Voiture {
 
     ctx.restore();
   }
-
-  movemmm() {
-    this.x += this.vitesseX;
-    if (this.y < canvas.height) {this.y +=this.vitesseY;}
-    else {
-    	var index = voitures.indexOf(this);
-    	if (index >-1){
-    		voitures.splice(index,1);
-    	}
-    }
-  }
-
-  moveMissile() {
-    this.x -= this.vitesseX;
-    if (this.y >= 0) {this.y -=this.vitesseY;}
-    else {
-    	var index = missiles.indexOf(this);
-    	if (index >-1){
-    		missiles.splice(index,1);
-    	}
-    }
-  }
-
-
+  
   move() {
     if(this.direction === 1){
       this.x -= this.vitesseX;

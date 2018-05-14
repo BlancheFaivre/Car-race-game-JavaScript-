@@ -31,11 +31,25 @@ function animation() {
 			}
 
 			switch(cpt_tours){
-				case 1000 : niveau=1; frequence_envoi_ennemis -= 100; mediaElement.playbackRate += 0.1; break;
-				case 2500 : niveau=2; frequence_envoi_ennemis -= 100; mediaElement.playbackRate += 0.1; break;
-				case 5000 : niveau=3; frequence_envoi_ennemis -= 100; mediaElement.playbackRate += 0.1; break;
-				case 10000 : niveau=4; frequence_envoi_ennemis -= 100; mediaElement.playbackRate += 0.1; break;
+				case 1000 : niveau=1; frequence_envoi_ennemis -= 100; mediaElement.playbackRate += 0.1; 
+				voitures.forEach((el) => {
+					el.vitesseY += 20;
+				 }); break;
+				case 2500 : niveau=2; frequence_envoi_ennemis -= 100; mediaElement.playbackRate += 0.1;
+				voitures.forEach((el) => {
+					el.vitesseY += 20;
+				 }); break;
+				case 5000 : niveau=3; frequence_envoi_ennemis -= 100; mediaElement.playbackRate += 0.1;
+				voitures.forEach((el) => {
+					el.vitesseY += 3;
+				 }); break;
+				case 10000 : niveau=4; frequence_envoi_ennemis -= 100; mediaElement.playbackRate += 0.1;
+				voitures.forEach((el) => {
+					el.vitesseY += 5;
+				 }); break;
 			}
+
+	
 			if (cpt_tours%5 == 0) score++;
 			// 1 on efface
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -86,6 +100,18 @@ function animation() {
 				voitures_bonus.push(bonus1);
 			}
 
+			// Recuperation de coeurs
+			if ((cpt_tours % frequence_envoi_vie == 0)&&(no_ennemis_en_vue())){
+				var r = Math.floor((Math.random() * 4) + 1);
+				if (r == 1) x_vie = 50;
+				else if (r == 2) x_vie = 200;
+				else if (r == 3) x_vie = 370;
+				else x_vie = 520;
+				vie1 = new Voiture(x_vie, 0, 0, 0, 0, 'black', 0);
+				vie1.vitesseY = 0.5;
+				vies.push(vie1);
+			}
+
 			 voitures.forEach((el) => {
 			 	var voiture_ennemie = document.getElementById("voiture_ennemie");
 				ctx.drawImage(voiture_ennemie, el.x, el.y, 50,80);
@@ -99,6 +125,11 @@ function animation() {
 			 missiles.forEach((el)=>{
 	 			var image_missile = document.getElementById("img_missile");
 	 			ctx.drawImage(image_missile, el.x, el.y, 20, 40);
+			 })
+
+			 vies.forEach((el) =>{
+				 var more_life = document.getElementById("coeur_vie");
+				 ctx.drawImage(more_life, el.x, el.y, 90, 100);
 			 })
 
 			var voiture_bonus_gagnees = document.getElementById("voiture_bonus");

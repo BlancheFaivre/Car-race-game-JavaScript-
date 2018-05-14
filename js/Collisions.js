@@ -25,6 +25,11 @@ function dessineEtDeplaceLesObjets() {
      el.move();
    })
 
+   vies.forEach((el => {
+     el.draw(ctx);
+     el.move();
+   }))
+
    joueur.draw(ctx);
 
 }
@@ -118,6 +123,19 @@ function testCollisionJoueursEnnemis() {
     	}
 
     }
+ })
+
+ vies.forEach((el) => {
+   if((((el.y + 50) > joueur.y) && (el.y + 50 < joueur.y + 50)) && (el.x == joueur.x)){
+     // incrémenter nombre de coeurs
+     if(nb_vies < 3){
+      nb_vies++;
+     }
+     var index = vies.indexOf(el);
+     if(index > -1){
+       vies.splice(index, 1);
+     }
+   }
  })
 
 }

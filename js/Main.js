@@ -37,6 +37,9 @@ let frequence_envoi_ennemis = 1000;
 let frequence_envoi_bonus = 3000;
 let go_fin = false;
 let joueur_appuye_sur_commencer = false;
+let vies = [];
+let frequence_envoi_vie = 1000;
+let x_vie, y_vie;
 
 
 function my_function(){
@@ -86,16 +89,20 @@ function init() {
   // Gestion SoundWave
 	onLoadSoundWave();
 
-  ennemi = new Voiture(200, 50, 0, 0, 0, 'black');
+  ennemi = new Voiture(200, 50, 0, 0, 0, 'black', 0);
   ennemi.vitesseY = 3;
   voitures.push(ennemi);
 
 
-  bonus = new Voiture(50, 50, 0, 0, 0, 'black');
+  bonus = new Voiture(50, 50, 0, 0, 0, 'black', 0);
   bonus.vitesseY = 3;
   voitures_bonus.push(bonus);
 
-  joueur = new Voiture(370, 500, 0, 0, 0,'black');
+  joueur = new Voiture(370, 500, 0, 0, 0,'black', 0);
+
+  vie = new Voiture(50, 50, 0, 0, 0, 'red', 0);
+  vie.vitesseY = 0.5;
+  vies.push(vie);
 
   // Ecouteurs de clavier
   window.onkeydown = traiteKeydown;
