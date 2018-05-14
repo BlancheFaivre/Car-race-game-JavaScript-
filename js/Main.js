@@ -33,13 +33,16 @@ let missiles = [];
 let x_ennemi, y_ennemi;
 let x_bonus, y_bonus;
 let niveau = 0;
-let frequence_envoi_ennemis = 1000;
+let frequence_envoi_ennemis = 700;
 let frequence_envoi_bonus = 3000;
 let go_fin = false;
 let joueur_appuye_sur_commencer = false;
+let afficher_entrer = true;
+let afficher_entrer_fin = true;
 let vies = [];
-let frequence_envoi_vie = 1000;
+let frequence_envoi_vie = 2000;
 let x_vie, y_vie;
+
 
 
 function my_function(){
@@ -54,11 +57,11 @@ function pause_function(){
 	var buttons = document.getElementById("pause_btn");
 
 	if (document.getElementById("pause_btn").value == "pause"){
-		buttons.innerHTML = '<img src="play.png" width="50" height="50"/>';
+		buttons.innerHTML = '<img src="images/play.png" width="50" height="50"/>';
 		document.getElementById("pause_btn").value = "play";
 	}
 	else {
-		buttons.innerHTML = '<img src="pause.png" width="50" height="50"/>';
+		buttons.innerHTML = '<img src="images/pause.png" width="50" height="50"/>';
 		document.getElementById("pause_btn").value = "pause";
 	}
 
@@ -70,11 +73,27 @@ function pause_function(){
 	}
 	pause_partie = !pause_partie;
 }
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+}
 
 // main.js
 function init() {
   console.log("page chargee");
-
   // 1 On recupere un pointeur sur le canvas
   canvas = document.querySelector("#myCanvas");
 	canvas2 = document.querySelector("#my_music_canvas");

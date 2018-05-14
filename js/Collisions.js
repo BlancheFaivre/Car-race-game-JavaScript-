@@ -74,6 +74,7 @@ function testeCollisionsAvecMurs(r) {
   }
 }
 
+
 function testCollisionJoueursEnnemis() {
   voitures.forEach((el) => {
     if((((el.y + 50) > joueur.y)&&(el.y < joueur.y + 50))&&(el.x == joueur.x)) {
@@ -82,20 +83,24 @@ function testCollisionJoueursEnnemis() {
       y_explosion = joueur.y - 20;
       if (nb_vies > 0) {nb_vies -= 1;}
       else {
-      	go_fin = true;
+      	stop_partie = true;
         ctx_fin.font = "60px Georgia";
-      	ctx_fin.fillText("PERDU !", 170, 260);
-      	ctx_fin.fillText("Votre score est de ", 10, 310);
-        if (score < 100)ctx_fin.fillText(score.toString(), 260, 380);
-        else if (score < 1000) ctx_fin.fillText(score.toString(), 240, 380);
-        else if (score < 10000) ctx_fin.fillText(score.toString(), 210, 380);
-        else ctx_fin.fillText(score.toString(), 230, 380);
+        img_tableau = document.getElementById("tableau");
+        ctx.drawImage(img_tableau, 0,-150,canvas.width, canvas.height);
+        ctx.drawImage(img_tableau, 0,600,canvas.width, canvas.height);
+      	//ctx_fin.fillText("PERDU !", 170, 100);
+      	ctx_fin.fillText("Votre score est de ", 20, 280);
+        ctx_fin.font = "100px Georgia";
+        if (score < 100)ctx_fin.fillText(score.toString(), 230, 400);
+        else if (score < 1000) ctx_fin.fillText(score.toString(), 210, 400);
+        else if (score < 10000) ctx_fin.fillText(score.toString(), 180, 400);
+        else ctx_fin.fillText(score.toString(), 150, 400);
       }
       if (nb_vies > 0) {
         var index = voitures.indexOf(el);
     	   if (index >-1){
     		     voitures.splice(index,1);
-    	   }
+    	   }111
       }
     }
     missiles.forEach((mi)=>{

@@ -23,14 +23,14 @@ Blanche :
 - Implémentation du score
 - Implémentation du menu initial (règle du jeu)
 - Implémentation des vies du joueur (3 au début du jeu)
-- Implémentation de l'affichage du nombre de missiles récupérés et de voitures rouges détruites (à faire : + prise en compte dans le score final)
+- Implémentation de l'affichage du nombre de missiles récupérés et de voitures rouges détruites
+- Affichage du score final 
 
 Mohamed :
 - Implémentation de la SoundWave
 - Gestion de la cadence de la musique selon le niveau d'avancement dans le jeu
-- Implémentation de la voiture (à chaque changement de niveau on a une voiture folle qui fonce sur le joueur)
+- Implémentation de la voiture folle (à chaque changement de niveau on a une voiture folle qui fonce sur le joueur)
 - Implémentation de la récupération de vie et mise à joueur du nombre de vie
--
 
 
 --------- Points forts ------------
